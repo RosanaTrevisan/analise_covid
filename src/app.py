@@ -52,6 +52,5 @@ def main():
     st.pyplot(figura)
     
     
-
 if __name__ == "__main__":
     main()
