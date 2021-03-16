@@ -19,7 +19,8 @@ def grafico_comparativo(dados_2019, dados_2020, causa, estado="BRASIL"):
     else:
         total_2019 = dados_2019.groupby(["uf", "tipo_doenca"]).sum()
         total_2020 = dados_2020.groupby(["uf", "tipo_doenca"]).sum()
-        lista = [int(total_2019.loc[estado, causa]), int(total_2020.loc[estado,causa])]
+        lista = [int(total_2019.loc[estado, causa] if (estado, causa) in total_2019.index else 0),
+        int(total_2020.loc[estado, causa] if (estado, causa) in total_2020.index else 0)]
     dados = pd.DataFrame({"Total": lista,
                           "Ano": [2019, 2020]})
     
@@ -43,9 +44,9 @@ def main():
 
     st.markdown("Este trabalho analisa dados dos **obitos 2019 e 2020**")
 
-    opcao_1 = st.selectbox("Selecione o tipo de doença", tipo_doenca)
+    opcao_1 = st.sidebar.selectbox("Selecione o tipo de doença", tipo_doenca)
 
-    opcao_2 = st.selectbox("Selecione o estado", estado)
+    opcao_2 = st.sidebar.selectbox("Selecione o estado", estado)
 
     figura = grafico_comparativo(obitos_2019, obitos_2020, opcao_1, opcao_2)
 
