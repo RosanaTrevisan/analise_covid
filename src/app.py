@@ -36,8 +36,8 @@ def grafico_comparativo(dados_2019, dados_2020, causa, estado="BRASIL"):
 
 def main():
 
-    obitos_2019 = carrega_dados("dados\obitos-2019.csv")
-    obitos_2020 = carrega_dados("dados\obitos-2020.csv")
+    obitos_2019 = carrega_dados("dados/obitos-2019.csv")
+    obitos_2020 = carrega_dados("dados/obitos-2020.csv")
     
     tipo_doenca = obitos_2020["tipo_doenca"].unique()
 
